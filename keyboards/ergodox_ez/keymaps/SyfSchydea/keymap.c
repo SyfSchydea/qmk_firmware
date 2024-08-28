@@ -114,7 +114,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 
 /* Keymap SPEC: Special functions and layer switches
- *
+ *  Left side is fully transparent                                 Right side is opaque apart from marked keys
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |RstKb |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
@@ -129,9 +129,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                        ,-------------.       ,-------------.
  *                                        |      |      |       |      |      |
  *                                 ,------|------|------|       |------+------+------.
- *                                 |      |      |      |       |      |      |      |
- *                                 |      |      |------|       |------|      |Print |
- *                                 |      |      |      |       |      |      |Screen|
+ *                                 |      |      |      |       |      |Print |Print |
+ *                                 |      |      |------|       |------|Screen|Screen|
+ *                                 |      |      |      |       |      |      |Window|
  *                                 `--------------------'       `--------------------'
  */
 [SPEC] = LAYOUT_ergodox_pretty(
@@ -144,7 +144,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
                                                KC_TRNS, KC_TRNS,     KC_NO, KC_NO,
                                                         KC_TRNS,     KC_NO,
-                                      KC_TRNS, KC_TRNS, KC_TRNS,     KC_NO, KC_NO, KC_PSCR
+                                      KC_TRNS, KC_TRNS, KC_TRNS,     KC_NO, KC_PSCR, LALT(KC_PSCR)
 ),
 };
 // clang-format on

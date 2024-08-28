@@ -38,11 +38,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [BASE] = LAYOUT_ergodox_pretty(
   // left hand
-  KC_EQL,          KC_1,        KC_2,          KC_3,    KC_4,    KC_5,    KC_LEFT,              KC_RGHT,      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,           MO(SPEC),
-  KC_DEL,          KC_Q,        KC_W,          KC_F,    KC_P,    KC_B,    TG(SYMB),             TG(SYMB),     KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN,        KC_BSLS,
-  KC_BSPC,         KC_A,        KC_R,          KC_S,    KC_T,    KC_G,                                        KC_M,    KC_N,    KC_E,    KC_I,    LT(MDIA, KC_O), GUI_T(KC_QUOT),
-  KC_LSFT,         CTL_T(KC_Z), KC_X,          KC_C,    KC_D,    KC_V,    ALL_T(KC_NO),         MEH_T(KC_NO), KC_K,    KC_H,    KC_COMM, KC_DOT,  CTL_T(KC_SLSH), KC_RSFT,
-  LT(SYMB,KC_GRV), KC_QUOT,     LALT(KC_LSFT), KC_LEFT, KC_RGHT,                                              KC_UP,   KC_DOWN, KC_LBRC, KC_RBRC, TT(SYMB),
+  KC_EQL,          UK_1,        UK_2,          UK_3,    UK_4,    UK_5,    KC_LEFT,              KC_RGHT,      UK_6,    UK_7,    UK_8,    UK_9,    UK_0,           MO(SPEC),
+  KC_DEL,          UK_Q,        UK_W,          UK_F,    UK_P,    UK_B,    TG(SYMB),             TG(SYMB),     UK_J,    UK_L,    UK_U,    UK_Y,    UK_SCLN,        UK_BSLS,
+  KC_BSPC,         UK_A,        UK_R,          UK_S,    UK_T,    UK_G,                                        UK_M,    UK_N,    UK_E,    UK_I,    LT(MDIA, UK_O), GUI_T(UK_QUOT),
+  KC_LSFT,         CTL_T(UK_Z), UK_X,          UK_C,    UK_D,    UK_V,    ALL_T(KC_NO),         MEH_T(KC_NO), UK_K,    UK_H,    UK_COMM, UK_DOT,  CTL_T(UK_SLSH), KC_RSFT,
+  LT(SYMB,UK_GRV), UK_QUOT,     LALT(KC_LSFT), KC_LEFT, KC_RGHT,                                              KC_UP,   KC_DOWN, UK_LBRC, UK_RBRC, TT(SYMB),
                                                            ALT_T(KC_APP), KC_LGUI,                KC_LALT, CTL_T(KC_ESC),
                                                                           KC_HOME,                 KC_PGUP,
                                                          KC_SPC, KC_BSPC, KC_END,                  KC_PGDN, KC_TAB, KC_ENT

@@ -2,9 +2,11 @@
 #include "version.h"
 
 enum layers {
-    BASE,  // default layer
-    SYMB,  // symbols
-    MDIA,  // media keys
+	BASE,  // default layer
+	SYMB,  // symbols
+	MDIA,  // media keys
+
+	SPEC,  // Special functions and layer switches
 };
 
 enum custom_keycodes {
@@ -16,7 +18,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |   =    |   1  |   2  |   3  |   4  |   5  | LEFT |           | RIGHT|   6  |   7  |   8  |   9  |   0  |   -    |
+ * |   =    |   1  |   2  |   3  |   4  |   5  | LEFT |           | RIGHT|   6  |   7  |   8  |   9  |   0  |Special |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * | Del    |   Q  |   W  |   F  |   P  |   B  |  L1  |           |  L1  |   J  |   L  |   U  |   Y  |   ;  |   \    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -36,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [BASE] = LAYOUT_ergodox_pretty(
   // left hand
-  KC_EQL,          KC_1,        KC_2,          KC_3,    KC_4,    KC_5,    KC_LEFT,              KC_RGHT,      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,           KC_MINS,
+  KC_EQL,          KC_1,        KC_2,          KC_3,    KC_4,    KC_5,    KC_LEFT,              KC_RGHT,      KC_6,    KC_7,    KC_8,    KC_9,    KC_0,           MO(SPEC),
   KC_DEL,          KC_Q,        KC_W,          KC_F,    KC_P,    KC_B,    TG(SYMB),             TG(SYMB),     KC_J,    KC_L,    KC_U,    KC_Y,    KC_SCLN,        KC_BSLS,
   KC_BSPC,         KC_A,        KC_R,          KC_S,    KC_T,    KC_G,                                        KC_M,    KC_N,    KC_E,    KC_I,    LT(MDIA, KC_O), GUI_T(KC_QUOT),
   KC_LSFT,         CTL_T(KC_Z), KC_X,          KC_C,    KC_D,    KC_V,    ALL_T(KC_NO),         MEH_T(KC_NO), KC_K,    KC_H,    KC_COMM, KC_DOT,  CTL_T(KC_SLSH), KC_RSFT,
@@ -109,6 +111,40 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS,
                                                         KC_TRNS,     KC_TRNS,
                                       KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_WBAK
+),
+
+/* Keymap SPEC: Special functions and layer switches
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |        |      |      |      |      |      |      |           |RstKb |      |      |      |      |      |        |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |NumLk |        |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |      |      |      |      |      |------|           |------|      |      |      | NKRO |Sleep |        |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |      |      |      |      |      |                                       |      |      |      |      |      |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |      |      |       |      |      |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |      |       |      |      |      |
+ *                                 |      |      |------|       |------|      |Print |
+ *                                 |      |      |      |       |      |      |Screen|
+ *                                 `--------------------'       `--------------------'
+ */
+[SPEC] = LAYOUT_ergodox_pretty(
+  // left hand
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     QK_BOOT, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NUM,  KC_NO,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                       KC_NO, KC_NO, KC_NO, NK_ON, KC_SLEP, KC_NO,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                       KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO,
+
+                                               KC_TRNS, KC_TRNS,     KC_NO, KC_NO,
+                                                        KC_TRNS,     KC_NO,
+                                      KC_TRNS, KC_TRNS, KC_TRNS,     KC_NO, KC_NO, KC_PSCR
 ),
 };
 // clang-format on
@@ -184,14 +220,14 @@ layer_state_t layer_state_set_user(layer_state_t state) {
             // rgblight_setrgb(RGBLIGHT_COLOR_LAYER_6);
 // #endif
             // break;
-        // case 7:
-            // ergodox_right_led_1_on();
-            // ergodox_right_led_2_on();
-            // ergodox_right_led_3_on();
-// #ifdef RGBLIGHT_COLOR_LAYER_7
-            // rgblight_setrgb(RGBLIGHT_COLOR_LAYER_7);
-// #endif
-            // break;
+        case SPEC:
+            ergodox_right_led_1_on();
+            ergodox_right_led_2_on();
+            ergodox_right_led_3_on();
+#ifdef RGBLIGHT_COLOR_LAYER_7
+            rgblight_setrgb(RGBLIGHT_COLOR_LAYER_7);
+#endif
+            break;
         default:
             break;
     }

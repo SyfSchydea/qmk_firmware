@@ -1,8 +1,11 @@
 #include QMK_KEYBOARD_H
 #include "version.h"
+#include "keymap_uk.h"
 
 enum layers {
 	BASE,  // default layer
+	STNO,  // Steno Layer
+
 	SYMB,  // symbols
 	MDIA,  // media keys
 
@@ -15,7 +18,7 @@ enum custom_keycodes {
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
-/* Keymap 0: Basic layer
+/* Keymap BASE: Basic layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |  ESC   |      |      |      |      |      | LEFT |           | RIGHT|      |      |      |      |      |Special |
@@ -47,6 +50,40 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                       KC_APP,           KC_NO,
                                      KC_SPC, KC_BSPC, KC_DEL,           KC_RCTL, KC_RSFT, MO(SYMB)
 ),
+
+/* Keymap STNO: Stenography Layer
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |        |      |      |      |      |      |(play)|           |      |      |      |      |      |      |Special |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |        |  #   |  #   |  #   |  #   |  #   |      |           |      |  #   |  #   |  #   |  #   |  #   |   #    |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * | (Symbl)|  S   |  T   |  P   |  H   |  *   |------|           |------|  *   |  F   |  P   |  L   |  T   |   D    |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * | (Shift)|  S   |  K   |  W   |  R   |  *   |      |           |      |  *   |  R   |  B   |  G   |  S   |   Z    |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |(CTRL)|      |      |      |      |                                       |(left)|(down)| (up) |(rght)|      |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |(Copy)|(Pste)|       |      |      |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |      |       |      |      |      |
+ *                                 |  A   |  O   |------|       |------|  E   |  U   |
+ *                                 |      |      |      |       |      |      |      |
+ *                                 `--------------------'       `--------------------'
+ */
+[STNO] = LAYOUT_ergodox_pretty(
+  // left hand
+  KC_NO,   KC_NO,  KC_NO,  KC_NO,  KC_NO,  KC_NO,   KC_TRNS,    KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,  MO(SPEC),
+  KC_NO,   STN_N1, STN_N2, STN_N3, STN_N4, STN_N5,  KC_NO,      KC_NO, STN_N6,  STN_N7,  STN_N8,  STN_N9,  STN_NA, STN_NB,
+  KC_TRNS, STN_S1, STN_TL, STN_PL, STN_HL, STN_ST1,                    STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR, STN_DR,
+  KC_TRNS, STN_S2, STN_KL, STN_WL, STN_RL, STN_ST2, KC_NO,      KC_NO, STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR, STN_ZR,
+  KC_TRNS, KC_NO,  KC_NO,  KC_NO,  KC_NO,                              KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO,
+
+                                         KC_TRNS, KC_TRNS,        KC_NO, KC_NO,
+                                                  KC_NO,          KC_NO,
+                                  STN_A, STN_O,   KC_NO,          KC_NO, STN_E, STN_U
+),
+
 /* Keymap 1: Symbol Layer
  *
  * ,---------------------------------------------------.           ,--------------------------------------------------.
@@ -116,7 +153,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap SPEC: Special functions and layer switches
  *  Left side is fully transparent                                 Right side is opaque apart from marked keys
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |      |      |      |      |      |      |           |RstKb |      |      |      |      |      |        |
+ * |        |      |      |      |      |      |      |           |RstKb |      |      |      |Steno | Base |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |NumLk |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -136,11 +173,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [SPEC] = LAYOUT_ergodox_pretty(
   // left hand
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     QK_BOOT, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NUM,  KC_NO,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                       KC_NO, KC_NO, KC_NO, NK_ON, KC_SLEP, KC_NO,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                       KC_NO, KC_NO, KC_NO, KC_NO,   KC_NO,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     QK_BOOT, KC_NO, KC_NO, KC_NO, TO(STNO), TO(BASE), KC_NO,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO,    KC_NUM,   KC_NO,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                       KC_NO, KC_NO, KC_NO, NK_ON,    KC_SLEP,  KC_NO,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO,    KC_NO,    KC_NO,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                       KC_NO, KC_NO, KC_NO,    KC_NO,    KC_NO,
 
                                                KC_TRNS, KC_TRNS,     KC_NO, KC_NO,
                                                         KC_TRNS,     KC_NO,
@@ -181,12 +218,12 @@ layer_state_t layer_state_set_user(layer_state_t state) {
             rgblight_setrgb(RGBLIGHT_COLOR_LAYER_0);
 #endif
             break;
-        // case 1:
-            // ergodox_right_led_1_on();
-// #ifdef RGBLIGHT_COLOR_LAYER_1
-            // rgblight_setrgb(RGBLIGHT_COLOR_LAYER_1);
-// #endif
-            // break;
+        case STNO:
+            ergodox_right_led_1_on();
+#ifdef RGBLIGHT_COLOR_LAYER_1
+            rgblight_setrgb(RGBLIGHT_COLOR_LAYER_1);
+#endif
+            break;
         // case 2:
             // ergodox_right_led_2_on();
 // #ifdef RGBLIGHT_COLOR_LAYER_2

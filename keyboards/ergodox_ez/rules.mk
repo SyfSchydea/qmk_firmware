@@ -16,3 +16,7 @@ BACKLIGHT_SUPPORTED = no
 MOUSE_SHARED_EP = no
 
 DEFAULT_FOLDER = ergodox_ez/base
+
+NKRO_ENABLE = yes
+STENO_ENABLE = yes
+STENO_PROTOCOL = geminipr

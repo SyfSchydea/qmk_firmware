@@ -20,3 +20,5 @@ DEFAULT_FOLDER = ergodox_ez/base
 NKRO_ENABLE = yes
 STENO_ENABLE = yes
 STENO_PROTOCOL = geminipr
+
+TAP_DANCE_ENABLE = yes

@@ -66,7 +66,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |  ESC   |      |      |      |      |      | LEFT |           | RIGHT|      |      |      |      |      |Special |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |  Tab   |  Q   |  W   |  F   |  P   |  B   |      |           |  L1  |  J   |  L   |  U   |  Y   |  ;:  |        |
+ * |  Tab   |  Q   |  W   |  F   |  P   |  B   |      |           |      |  J   |  L   |  U   |  Y   |  ;:  |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |Symbols |  A   |  R   |  S   |  T   |  G   |------|           |------|  M   |  N   |  E   |  I   |  O   |   -_   |
  * |--------+------+------+------+------+------| Win  |           | Win  |------+------+------+------+------+--------|
@@ -96,7 +96,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 /* Keymap STNO: Stenography Layer
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |      |      |      |      |      |(Play)|           |      |      |      |      |      |      |Base/Spc|
+ * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |Base/Spc|
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |        |  #   |  #   |  #   |  #   |  #   |      |           |      |  #   |  #   |  #   |  #   |  #   |   #    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -116,7 +116,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [STNO] = LAYOUT_ergodox_pretty(
   // left hand
-  KC_NO,   KC_NO,  KC_NO,  KC_NO,   KC_NO,  KC_NO,   KC_TRNS,    KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,  BASE_SPEC,
+  KC_NO,   KC_NO,  KC_NO,  KC_NO,   KC_NO,  KC_NO,   KC_NO,      KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,  BASE_SPEC,
   KC_NO,   STN_N1, STN_N2, STN_N3,  STN_N4, STN_N5,  KC_NO,      KC_NO, STN_N6,  STN_N7,  STN_N8,  STN_N9,  STN_NA, STN_NB,
   KC_TRNS, STN_S1, STN_TL, STN_PL,  STN_HL, STN_ST1,                    STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR, STN_DR,
   KC_TRNS, STN_S2, STN_KL, STN_WL,  STN_RL, STN_ST2, KC_NO,      KC_NO, STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR, STN_ZR,

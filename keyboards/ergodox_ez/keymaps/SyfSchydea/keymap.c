@@ -47,6 +47,7 @@ void td_base_spec_reset(tap_dance_state_t *state, void *user_data) {
 }
 
 tap_dance_action_t tap_dance_actions[] = {
+	// TO(BASE) on tap, MO(SPEC) on hold
 	[TD_BASE_SPEC] = ACTION_TAP_DANCE_FN_ADVANCED_WITH_RELEASE(
 			NULL, // on each tap
 			td_base_spec_release,
@@ -192,7 +193,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap SPEC: Special functions and layer switches
  *  Left side is fully transparent                                 Right side is opaque apart from marked keys
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |      |      |      |      |      |      |           |RstKb |      |      |      |Steno | Base |        |
+ * |        |      |      |      |      |      |      |           |RstKb |      |      |      |      |Steno |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |NumLk |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -212,11 +213,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [SPEC] = LAYOUT_ergodox_pretty(
   // left hand
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     QK_BOOT, KC_NO, KC_NO, KC_NO, TO(STNO), TO(BASE), KC_NO,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO,    KC_NUM,   KC_NO,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                       KC_NO, KC_NO, KC_NO, NK_ON,    KC_SLEP,  KC_NO,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO,    KC_NO,    KC_NO,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                       KC_NO, KC_NO, KC_NO,    KC_NO,    KC_NO,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     QK_BOOT, KC_NO, KC_NO, KC_NO, KC_NO, TO(STNO), KC_TRNS,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NUM,   KC_NO,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                       KC_NO, KC_NO, KC_NO, NK_ON, KC_SLEP,  KC_NO,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,    KC_NO,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                       KC_NO, KC_NO, KC_NO, KC_NO,    KC_NO,
 
                                                KC_TRNS, KC_TRNS,     KC_NO, KC_NO,
                                                         KC_TRNS,     KC_NO,

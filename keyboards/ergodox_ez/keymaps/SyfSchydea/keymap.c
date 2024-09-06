@@ -6,6 +6,7 @@ enum layers {
 	BASE,  // default layer
 	STNO,  // Steno Layer
 
+	CTRL,  // Ctrl overlay, mostly qwerty
 	SYMB,  // symbols
 	MDIA,  // media keys
 
@@ -56,6 +57,7 @@ tap_dance_action_t tap_dance_actions[] = {
 };
 
 #define BASE_SPEC TD(TD_BASE_SPEC)
+#define SYF_LCTL  LM(CTRL, MOD_LCTL)
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -86,7 +88,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_TAB,   UK_Q,    UK_W,  UK_F,    UK_P,   UK_B,  KC_NO,                KC_NO,   UK_J,    UK_L,    UK_U,    UK_Y,    UK_SCLN,  KC_NO,
   MO(SYMB), UK_A,    UK_R,  UK_S,    UK_T,   UK_G,                                 UK_M,    UK_N,    UK_E,    UK_I,    UK_O,     UK_MINS,
   KC_LSFT,  UK_Z,    UK_X,  UK_C,    UK_D,   UK_V,  KC_LWIN,              KC_RWIN, UK_K,    UK_H,    UK_COMM, UK_DOT,  UK_QUOT,  UK_SLSH,
-  KC_LCTL,  UK_BSLS, KC_NO, KC_LALT, KC_ENT,                                       KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, MO(MDIA),
+  SYF_LCTL, UK_BSLS, KC_NO, KC_LALT, KC_ENT,                                       KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, MO(MDIA),
                                        LCTL(KC_INS),  LSFT(KC_INS),     KC_NO,   KC_NO,
                                                       KC_APP,           KC_NO,
                                      KC_SPC, KC_BSPC, KC_DEL,           KC_RCTL, KC_RSFT, MO(SYMB)
@@ -124,8 +126,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                    STN_A, STN_O,   KC_NO,          KC_NO, STN_E, STN_U
 ),
 
-/* Keymap 1: Symbol Layer
- *
+/* Keymap CTRL: CTRL overlay - mostly qwerty
+ * ,---------------------------------------------------.           ,--------------------------------------------------.
+ * |         |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * |---------+------+------+------+------+------+------|           |------+------+------+------+------+------+--------|
+ * |         |  Q   |  W   |  E   |  R   |  T   |  P   |           |      |      |      |      |      |      |        |
+ * |---------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |         |  A   |  S   |  D   |  F   |  G   |------|           |------|      |      |      |      |      |        |
+ * |---------+------+------+------+------+------|  N   |           |      |------+------+------+------+------+--------|
+ * |         |  Z   |  X   |  C   |  V   |  B   |      |           |      |      |      |      |      |      |        |
+ * `---------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |       |      |      |      |      |                                       |      |      |      |      |      |
+ *   `-----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        |      |      |       |      |      |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |      |       |      |      |      |
+ *                                 |      |      |------|       |------|      |      |
+ *                                 |      |      |      |       |      |      |      |
+ *                                 `--------------------'       `--------------------'
+ */
+[CTRL] = LAYOUT_ergodox_pretty(
+  // left hand
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_TRNS, UK_Q,    UK_W,    UK_E,    UK_R,    UK_T,    UK_P,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_TRNS, UK_A,    UK_S,    UK_D,    UK_F,    UK_G,                          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_TRNS, UK_Z,    UK_X,    UK_C,    UK_V,    UK_B,    UK_N,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                                             KC_TRNS, KC_TRNS,         KC_TRNS, KC_TRNS,
+                                                      KC_TRNS,         KC_TRNS,
+                                    KC_TRNS, KC_TRNS, KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS
+),
+
+/* Keymap SYMB: Symbol Layer
  * ,---------------------------------------------------.           ,--------------------------------------------------.
  * | Escape  |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |           |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |        |
  * |---------+------+------+------+------+------+------|           |------+------+------+------+------+------+--------|
@@ -156,8 +189,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                             KC_TRNS,         KC_TRNS,
                                           KC_TRNS, KC_TRNS, KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS
 ),
-/* Keymap 2: Media and mouse keys
- *
+
+/* Keymap MDIA: Media and mouse keys
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|

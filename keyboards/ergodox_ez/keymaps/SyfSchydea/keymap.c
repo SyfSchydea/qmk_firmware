@@ -2,7 +2,6 @@
 #include "version.h"
 #include "keymap_uk.h"
 
-#define TAPPING_TERM 175
 #define TAPPING_TERM_PER_KEY
 
 enum layers {

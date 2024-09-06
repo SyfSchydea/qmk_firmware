@@ -13,9 +13,9 @@ enum layers {
 };
 
 typedef struct {
-    uint16_t tap;
-    uint16_t hold;
-    bool     held;
+	uint16_t tap;
+	uint16_t hold;
+	bool     held;
 } tap_dance_tap_hold_t;
 
 enum custom_keycodes {
@@ -26,15 +26,32 @@ enum tapdance_keys {
 	TD_BASE_SPEC,
 };
 
+void td_base_spec_fin(tap_dance_state_t *state, void *user_data) {
+	if (state->pressed) {
+		// Begin hold case
+		layer_on(SPEC);
+	}
+}
+
+void td_base_spec_release(tap_dance_state_t *state, void *user_data) {
+	if (!state->finished) {
+		// Fire tap case
+		layer_move(BASE);
+		state->finished = true;
+	}
+}
+
+void td_base_spec_reset(tap_dance_state_t *state, void *user_data) {
+	// End hold case
+	layer_off(SPEC);
+}
+
 tap_dance_action_t tap_dance_actions[] = {
-	[TD_BASE_SPEC] = {
-		.fn = {
+	[TD_BASE_SPEC] = ACTION_TAP_DANCE_FN_ADVANCED_WITH_RELEASE(
 			NULL, // on each tap
-			td_base_spec_fin,
-			td_base_spec_reset,
 			td_base_spec_release,
-		},
-		.user_data = (void*) &((tap_dance_tap_hold_t) { TO(BASE), MO(SPEC), false })
+			td_base_spec_fin,
+			td_base_spec_reset),
 };
 
 #define BASE_SPEC TD(TD_BASE_SPEC)

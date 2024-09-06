@@ -8,6 +8,7 @@ enum layer {
 
 	CTRL,  // Ctrl overlay, mostly qwerty
 	SYMB,  // symbols
+	NAVI,  // Navigation
 	MDIA,  // media keys
 
 	SPEC,  // Special functions and layer switches
@@ -59,6 +60,8 @@ tap_dance_action_t tap_dance_actions[] = {
 #define BASE_SPEC TD(TD_BASE_SPEC)
 #define SYF_LCTL  LM(CTRL, MOD_LCTL)
 
+#define LCG(kc) LCTL(LGUI(kc))
+
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap BASE: Basic layer
@@ -66,13 +69,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |  ESC   |      |      |      |      |      | LEFT |           | RIGHT|      |      |      |      |      |Special |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |  Tab   |  Q   |  W   |  F   |  P   |  B   |      |           |      |  J   |  L   |  U   |  Y   |  ;:  |        |
+ * |  Tab   |  Q   |  W   |  F   |  P   |  B   |      |           |      |  J   |  L   |  U   |  Y   |  ;:  | Enter  |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |Symbols |  A   |  R   |  S   |  T   |  G   |------|           |------|  M   |  N   |  E   |  I   |  O   |   -_   |
  * |--------+------+------+------+------+------| Win  |           | Win  |------+------+------+------+------+--------|
  * | Shift  |  Z   |  X   |  C   |  D   |  V   |      |           |      |  K   |  H   |  ,<  |  .>  |  '@  |   /?   |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | CTRL |  \|  |      | Alt  |Enter |                                       | Left | Down |  Up  |Right |Media |
+ *   | CTRL |  \|  |      | Alt  | Nav  |                                       | Left | Down |  Up  |Right |Media |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-----------.
  *                                        | Copy |Paste |       |      |      |
@@ -85,10 +88,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = LAYOUT_ergodox_pretty(
   // left hand
   KC_ESC,   KC_NO,   KC_NO, KC_NO,   KC_NO,  KC_NO, KC_LEFT,              KC_RGHT, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,    MO(SPEC),
-  KC_TAB,   UK_Q,    UK_W,  UK_F,    UK_P,   UK_B,  KC_NO,                KC_NO,   UK_J,    UK_L,    UK_U,    UK_Y,    UK_SCLN,  KC_NO,
+  KC_TAB,   UK_Q,    UK_W,  UK_F,    UK_P,   UK_B,  KC_NO,                KC_NO,   UK_J,    UK_L,    UK_U,    UK_Y,    UK_SCLN,  KC_ENT,
   MO(SYMB), UK_A,    UK_R,  UK_S,    UK_T,   UK_G,                                 UK_M,    UK_N,    UK_E,    UK_I,    UK_O,     UK_MINS,
   KC_LSFT,  UK_Z,    UK_X,  UK_C,    UK_D,   UK_V,  KC_LWIN,              KC_RWIN, UK_K,    UK_H,    UK_COMM, UK_DOT,  UK_QUOT,  UK_SLSH,
-  SYF_LCTL, UK_BSLS, KC_NO, KC_LALT, KC_ENT,                                       KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, MO(MDIA),
+  SYF_LCTL, UK_BSLS, KC_NO, KC_LALT, MO(NAVI),                                     KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, MO(MDIA),
                                        LCTL(KC_INS),  LSFT(KC_INS),     KC_NO,   KC_NO,
                                                       KC_APP,           KC_NO,
                                      KC_SPC, KC_BSPC, KC_DEL,           KC_RCTL, KC_RSFT, MO(SYMB)
@@ -190,6 +193,38 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                           KC_TRNS, KC_TRNS, KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS
 ),
 
+/* Keymap NAVI: Navigation Layer
+ * ,---------------------------------------------------.           ,--------------------------------------------------.
+ * |         |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
+ * |---------+------+------+------+------+------+------|           |------+------+------+------+------+------+--------|
+ * |CtlAltTab|PageUp| Home |  Up  | End  |  T   |  P   |           |      |      |      |      |      |      |        |
+ * |---------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |         |PageDn| Left | Down |Right |  G   |------|           |------|      |      |      |      |      |        |
+ * |---------+------+------+------+------+------|  N   |           |      |------+------+------+------+------+--------|
+ * |         |  Z   |  X   |DskTLt|DskTRt|  B   |      |           |      |      |      |      |      |      |        |
+ * `---------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   |       |      |      |      |      |                                       |      |      |      |      |      |
+ *   `-----------------------------------'                                       `----------------------------------'
+ *                                         ,-------------.       ,-------------.
+ *                                         |      |      |       |      |      |
+ *                                  ,------|------|------|       |------+------+------.
+ *                                  |      |      |      |       |      |      |      |
+ *                                  |      |      |------|       |------|      |      |
+ *                                  |      |      |      |       |      |      |      |
+ *                                  `--------------------'       `--------------------'
+ */
+[NAVI] = LAYOUT_ergodox_pretty(
+  // left hand
+  KC_NO,       KC_NO,   KC_NO,   KC_NO,        KC_NO,        KC_NO, KC_NO,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  LCA(KC_TAB), KC_PGUP, KC_HOME, KC_UP,        KC_END,       KC_NO, KC_NO,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_NO,       KC_PGDN, KC_LEFT, KC_DOWN,      KC_RGHT,      KC_NO,                    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_NO,       KC_NO,   KC_NO,   LCG(KC_LEFT), LCG(KC_RGHT), KC_NO, KC_NO,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_NO,       KC_NO,   KC_NO,   KC_NO,        KC_TRNS,                                         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+                                                         KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS,
+                                                                  KC_TRNS,      KC_TRNS,
+                                                KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS
+),
+
 /* Keymap MDIA: Media and mouse keys
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
@@ -279,6 +314,7 @@ void keyboard_post_init_user(void) {
 
 #define LED_BLACK() do{ergodox_right_led_1_off();ergodox_right_led_2_off();ergodox_right_led_3_off();}while(0)
 #define LED_RED()   do{ergodox_right_led_1_on(); ergodox_right_led_2_off();ergodox_right_led_3_off();}while(0)
+#define LED_GREEN() do{ergodox_right_led_1_off();ergodox_right_led_2_on(); ergodox_right_led_3_off();}while(0)
 #define LED_WHITE() do{ergodox_right_led_1_on(); ergodox_right_led_2_on(); ergodox_right_led_3_on(); }while(0)
 
 // Runs whenever there is a layer state change.

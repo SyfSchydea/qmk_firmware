@@ -2,8 +2,6 @@
 #include "version.h"
 #include "keymap_uk.h"
 
-#define TAPPING_TERM_PER_KEY
-
 enum layers {
 	BASE,  // default layer
 	STNO,  // Steno Layer
@@ -14,6 +12,12 @@ enum layers {
 	SPEC,  // Special functions and layer switches
 };
 
+typedef struct {
+    uint16_t tap;
+    uint16_t hold;
+    bool     held;
+} tap_dance_tap_hold_t;
+
 enum custom_keycodes {
 	VRSN = SAFE_RANGE,
 };
@@ -23,7 +27,14 @@ enum tapdance_keys {
 };
 
 tap_dance_action_t tap_dance_actions[] = {
-	[TD_BASE_SPEC] = ACTION_TAP_DANCE_DOUBLE(TO(BASE), MO(SPEC)),
+	[TD_BASE_SPEC] = {
+		.fn = {
+			NULL, // on each tap
+			td_base_spec_fin,
+			td_base_spec_reset,
+			td_base_spec_release,
+		},
+		.user_data = (void*) &((tap_dance_tap_hold_t) { TO(BASE), MO(SPEC), false })
 };
 
 #define BASE_SPEC TD(TD_BASE_SPEC)

@@ -5,6 +5,7 @@
 enum layer {
 	BASE,  // default layer
 	STNO,  // Steno Layer
+	GAME,  // Game Layer
 
 	CTRL,  // Ctrl overlay, mostly qwerty
 	SYMB,  // symbols
@@ -127,6 +128,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                           KC_TRNS, KC_TRNS,        KC_NO, KC_NO,
                                                    KC_NO,          KC_NO,
                                    STN_A, STN_O,   KC_NO,          KC_NO, STN_E, STN_U
+),
+
+/* Keymap GAME: Gaming layer
+ *
+ * ,--------------------------------------------------.           ,--------------------------------------------------.
+ * |  ESC   |  1   |  2   |  3   |  4   |  5   |  6   |           |      |  6   |  7   |  8   |  9   |  0   |Special |
+ * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
+ * |  Tab   |  T   |  Q   |  W   |  E   |  R   |  7   |           |      |  Y   |  U   |  I   |  O   |  P   | Enter  |
+ * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |   \    |  G   |  A   |  S   |  D   |  F   |------|           |------|  H   |  J   |  K   |  L   |  ;:  |   '@   |
+ * |--------+------+------+------+------+------|  8   |           | Win  |------+------+------+------+------+--------|
+ * | Shift  |  B   |  Z   |  X   |  C   |  V   |      |           |      |  N   |  M   |  ,<  |  .>  |  /?  |   -_   |
+ * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
+ *   | CTRL |  9   |  0   | Alt  | Nav  |                                       | Left | Down |  Up  |Right |Media |
+ *   `----------------------------------'                                       `----------------------------------'
+ *                                        ,-------------.       ,-------------.
+ *                                        | Copy |Paste |       |  -   |  =   |
+ *                                 ,------|------|------|       |------+------+------.
+ *                                 |      |      |      |       |      |      |      |
+ *                                 | Space|Backsp|------|       |------|Shift |Symbol|
+ *                                 |      |ace   |      |       | CTRL |      |Layer |
+ *                                 `--------------------'       `--------------------'
+ */
+[BASE] = LAYOUT_ergodox_pretty(
+  // left hand
+  KC_ESC,  UK_1, UK_2, UK_3,    UK_4,   UK_5, UK_6,        KC_NO,   UK_6,    UK_7,    UK_8,    UK_9,    UK_0,     BASE_SPEC,
+  KC_TAB,  UK_T  UK_Q, UK_W,    UK_E,   UK_R, UK_7,        KC_NO,   UK_Y,    UK_U,    UK_I,    UK_O,    UK_P,     KC_ENT,
+  UK_BSLS, UK_G, UK_A, UK_S,    UK_D,   UK_F,                       UK_H,    UK_J,    UK_K,    UK_L,    UK_SCLN,  UK_QUOT,
+  KC_LSFT, UK_B, UK_Z, UK_X,    UK_C,   UK_V, UK_8,        KC_RWIN, UK_N,    UK_M,    UK_COMM, UK_DOT,  UK_SLSH,  UK_MINS,
+  KC_LCTL, UK_9, UK_0, KC_LALT, KC_ENT,                                      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  MO(MDIA),
+                              LCTL(KC_INS), LSFT(KC_INS),    UK_MINS, UK_EQL,
+                                            KC_NO,           KC_NO,
+                      KC_SPC,      KC_BSPC, KC_NO,           KC_RCTL, KC_RSFT, MO(SYMB)
 ),
 
 /* Keymap CTRL: CTRL overlay - mostly qwerty
@@ -261,7 +295,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap SPEC: Special functions and layer switches
  *  Left side is fully transparent                                 Right side is opaque apart from marked keys
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |        |      |      |      |      |      |      |           |RstKb |      |      |      |      |Steno |        |
+ * |        |      |      |      |      |      |      |           |RstKb |      |      |      | Game |Steno |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
  * |        |      |      |      |      |      |      |           |      |      |      |      |      |NumLk |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -281,11 +315,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [SPEC] = LAYOUT_ergodox_pretty(
   // left hand
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     QK_BOOT, KC_NO, KC_NO, KC_NO, KC_NO, TO(STNO), KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NUM,   KC_NO,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                       KC_NO, KC_NO, KC_NO, NK_ON, KC_SLEP,  KC_NO,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,    KC_NO,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                       KC_NO, KC_NO, KC_NO, KC_NO,    KC_NO,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     QK_BOOT, KC_NO, KC_NO, KC_NO, TO(GAME), TO(STNO), KC_TRNS,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO,    KC_NUM,   KC_NO,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                       KC_NO, KC_NO, KC_NO, NK_ON,    KC_SLEP,  KC_NO,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO,    KC_NO,    KC_NO,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                       KC_NO, KC_NO, KC_NO,    KC_NO,    KC_NO,
 
                                                KC_TRNS, KC_TRNS,     KC_NO, KC_NO,
                                                         KC_TRNS,     KC_NO,
@@ -323,6 +357,8 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 	if (layer_state_cmp(state, SPEC)) {
 		LED_WHITE();
+	} else if (layer_state_cmp(state, GAME)) {
+		LED_GREEN();
 	} else if (layer_state_cmp(state, STNO)) {
 		LED_RED();
 	} else { // BASE

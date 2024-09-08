@@ -151,10 +151,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 |      |ace   |      |       | CTRL |      |Layer |
  *                                 `--------------------'       `--------------------'
  */
-[BASE] = LAYOUT_ergodox_pretty(
+[GAME] = LAYOUT_ergodox_pretty(
   // left hand
   KC_ESC,  UK_1, UK_2, UK_3,    UK_4,   UK_5, UK_6,        KC_NO,   UK_6,    UK_7,    UK_8,    UK_9,    UK_0,     BASE_SPEC,
-  KC_TAB,  UK_T  UK_Q, UK_W,    UK_E,   UK_R, UK_7,        KC_NO,   UK_Y,    UK_U,    UK_I,    UK_O,    UK_P,     KC_ENT,
+  KC_TAB,  UK_T, UK_Q, UK_W,    UK_E,   UK_R, UK_7,        KC_NO,   UK_Y,    UK_U,    UK_I,    UK_O,    UK_P,     KC_ENT,
   UK_BSLS, UK_G, UK_A, UK_S,    UK_D,   UK_F,                       UK_H,    UK_J,    UK_K,    UK_L,    UK_SCLN,  UK_QUOT,
   KC_LSFT, UK_B, UK_Z, UK_X,    UK_C,   UK_V, UK_8,        KC_RWIN, UK_N,    UK_M,    UK_COMM, UK_DOT,  UK_SLSH,  UK_MINS,
   KC_LCTL, UK_9, UK_0, KC_LALT, KC_ENT,                                      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  MO(MDIA),

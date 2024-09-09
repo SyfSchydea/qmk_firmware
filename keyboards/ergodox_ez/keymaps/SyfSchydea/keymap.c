@@ -63,6 +63,8 @@ tap_dance_action_t tap_dance_actions[] = {
 bool key_a_held = false;
 bool key_d_held = false;
 
+#define set_code_state(kc, down) ((down)? register_code : unregister_code)(kc)
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	// Do strafe-tap pairs
 	if (IS_LAYER_ON(GAME)) {
@@ -70,22 +72,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 			case UK_A:
 				key_a_held = record->event.pressed;
 				if (key_d_held) {
-					if (record->event.pressed) {
-						unregister_code(UK_D);
-					} else {
-						register_code(UK_D);
-					}
+					set_code_state(UK_D, !record->event.pressed);
 				}
 				break;
 
 			case UK_D:
 				key_d_held = record->event.pressed;
 				if (key_a_held) {
-					if (record->event.pressed) {
-						unregister_code(UK_A);
-					} else {
-						register_code(UK_A);
-					}
+					set_code_state(UK_A, !record->event.pressed);
 				}
 				break;
 		}

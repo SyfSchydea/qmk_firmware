@@ -58,6 +58,42 @@ tap_dance_action_t tap_dance_actions[] = {
 			td_base_spec_reset),
 };
 
+// Strafe-tapping
+// Keep track of if the physical A/D keys are held
+bool key_a_held = false;
+bool key_d_held = false;
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+	// Do strafe-tap pairs
+	if (IS_LAYER_ON(GAME)) {
+		switch (keycode) {
+			case UK_A:
+				key_a_held = record->event.pressed;
+				if (key_d_held) {
+					if (record->event.pressed) {
+						unregister_code(UK_D);
+					} else {
+						register_code(UK_D);
+					}
+				}
+				break;
+
+			case UK_D:
+				key_d_held = record->event.pressed;
+				if (key_a_held) {
+					if (record->event.pressed) {
+						unregister_code(UK_A);
+					} else {
+						register_code(UK_A);
+					}
+				}
+				break;
+		}
+	}
+
+	return true;
+}
+
 #define BASE_SPEC TD(TD_BASE_SPEC)
 #define SYF_LCTL  LM(CTRL, MOD_LCTL)
 
@@ -327,17 +363,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 ),
 };
 // clang-format on
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    if (record->event.pressed) {
-        switch (keycode) {
-            case VRSN:
-                SEND_STRING(QMK_KEYBOARD "/" QMK_KEYMAP " @ " QMK_VERSION);
-                return false;
-        }
-    }
-    return true;
-}
 
 // Runs just one time when the keyboard initializes.
 void keyboard_post_init_user(void) {

@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------| Win  |           | Win  |------+------+------+------+------+--------|
  * | Shift  |  Z   |  X   |  C   |  D   |  V   |      |           |      |  K   |  H   |  ,<  |  .>  |  '@  |   /?   |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | CTRL |  \|  |      | Alt  | Nav  |                                       | Left | Down |  Up  |Right |Media |
+ *   | CTRL |  \|  |      | Alt  |Ent/Nv|                                       | Left | Down |  Up  |Right |Media |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-----------.
  *                                        | Copy |Paste |       |      |      |
@@ -89,10 +89,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [BASE] = LAYOUT_ergodox_pretty(
   // left hand
   KC_ESC,   KC_NO,   KC_NO, KC_NO,   KC_NO,  KC_NO, KC_LEFT,              KC_RGHT, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,    MO(SPEC),
-  KC_TAB,   UK_Q,    UK_W,  UK_F,    UK_P,   UK_B,  KC_NO,                KC_NO,   UK_J,    UK_L,    UK_U,    UK_Y,    UK_SCLN,  KC_ENT,
+  KC_TAB,   UK_Q,    UK_W,  UK_F,    UK_P,   UK_B,  KC_NO,                KC_NO,   UK_J,    UK_L,    UK_U,    UK_Y,    UK_SCLN,  KC_NO,
   MO(SYMB), UK_A,    UK_R,  UK_S,    UK_T,   UK_G,                                 UK_M,    UK_N,    UK_E,    UK_I,    UK_O,     UK_MINS,
   KC_LSFT,  UK_Z,    UK_X,  UK_C,    UK_D,   UK_V,  KC_LWIN,              KC_RWIN, UK_K,    UK_H,    UK_COMM, UK_DOT,  UK_QUOT,  UK_SLSH,
-  SYF_LCTL, UK_BSLS, KC_NO, KC_LALT, MO(NAVI),                                     KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, MO(MDIA),
+  SYF_LCTL, UK_BSLS, KC_NO, KC_LALT, LT(NAVI, KC_ENT),                             KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, MO(MDIA),
                                        LCTL(KC_INS),  LSFT(KC_INS),     KC_NO,   KC_NO,
                                                       KC_APP,           KC_NO,
                                      KC_SPC, KC_BSPC, KC_DEL,           KC_RCTL, KC_RSFT, MO(SYMB)
@@ -135,13 +135,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |  ESC   |  1   |  2   |  3   |  4   |  5   |  6   |           |      |  6   |  7   |  8   |  9   |  0   |Special |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |  Tab   |  T   |  Q   |  W   |  E   |  R   |  7   |           |      |  Y   |  U   |  I   |  O   |  P   | Enter  |
+ * |  Tab   |  T   |  Q   |  W   |  E   |  R   |  7   |           |      |  Y   |  U   |  I   |  O   |  P   |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |   \    |  G   |  A   |  S   |  D   |  F   |------|           |------|  H   |  J   |  K   |  L   |  ;:  |   '@   |
  * |--------+------+------+------+------+------|  8   |           | Win  |------+------+------+------+------+--------|
  * | Shift  |  B   |  Z   |  X   |  C   |  V   |      |           |      |  N   |  M   |  ,<  |  .>  |  /?  |   -_   |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
- *   | CTRL |  9   |  0   | Alt  | Nav  |                                       | Left | Down |  Up  |Right |Media |
+ *   | CTRL |  9   |  0   | Alt  |Enter |                                       | Left | Down |  Up  |Right |Media |
  *   `----------------------------------'                                       `----------------------------------'
  *                                        ,-------------.       ,-------------.
  *                                        | Copy |Paste |       |  -   |  =   |
@@ -154,7 +154,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [GAME] = LAYOUT_ergodox_pretty(
   // left hand
   KC_ESC,  UK_1, UK_2, UK_3,    UK_4,   UK_5, UK_6,        KC_NO,   UK_6,    UK_7,    UK_8,    UK_9,    UK_0,     BASE_SPEC,
-  KC_TAB,  UK_T, UK_Q, UK_W,    UK_E,   UK_R, UK_7,        KC_NO,   UK_Y,    UK_U,    UK_I,    UK_O,    UK_P,     KC_ENT,
+  KC_TAB,  UK_T, UK_Q, UK_W,    UK_E,   UK_R, UK_7,        KC_NO,   UK_Y,    UK_U,    UK_I,    UK_O,    UK_P,     KC_NO,
   UK_BSLS, UK_G, UK_A, UK_S,    UK_D,   UK_F,                       UK_H,    UK_J,    UK_K,    UK_L,    UK_SCLN,  UK_QUOT,
   KC_LSFT, UK_B, UK_Z, UK_X,    UK_C,   UK_V, UK_8,        KC_RWIN, UK_N,    UK_M,    UK_COMM, UK_DOT,  UK_SLSH,  UK_MINS,
   KC_LCTL, UK_9, UK_0, KC_LALT, KC_ENT,                                      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  MO(MDIA),
@@ -231,11 +231,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,---------------------------------------------------.           ,--------------------------------------------------.
  * |         |      |      |      |      |      |      |           |      |      |      |      |      |      |        |
  * |---------+------+------+------+------+------+------|           |------+------+------+------+------+------+--------|
- * |CtlAltTab|PageUp| Home |  Up  | End  |  T   |  P   |           |      |      |      |      |      |      |        |
+ * |CtlAltTab|PageUp| Home |  Up  | End  |      |      |           |      |      |      |      |      |      |        |
  * |---------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |         |PageDn| Left | Down |Right |  G   |------|           |------|      |      |      |      |      |        |
- * |---------+------+------+------+------+------|  N   |           |      |------+------+------+------+------+--------|
- * |         |  Z   |  X   |DskTLt|DskTRt|  B   |      |           |      |      |      |      |      |      |        |
+ * |         |PageDn| Left | Down |Right |      |------|           |------|      |      |      |      |      |        |
+ * |---------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
+ * |         |      |      |DskTLt|DskTRt|      |      |           |      |      |      |      |      |      |        |
  * `---------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |       |      |      |      |      |                                       |      |      |      |      |      |
  *   `-----------------------------------'                                       `----------------------------------'

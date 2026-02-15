@@ -66,9 +66,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap BASE: Basic layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
- * |  ESC   |      |      |      |      |      | LEFT |           | RIGHT|      |      |      |      |      |Special |
+ * |  ESC   |      |      |      |      |      |      |           |      |      |      |      |      |      |Special |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |  Tab   |  Q   |  W   |  F   |  P   |  B   |      |           |      |  J   |  L   |  U   |  Y   |  ;:  | Enter  |
+ * |  Tab   |  Q   |  W   |  F   |  P   |  B   | Pause|           |Alt Gr|  J   |  L   |  U   |  Y   |  ;:  | Enter  |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |Symbols |  A   |  R   |  S   |  T   |  G   |------|           |------|  M   |  N   |  E   |  I   |  O   |   -_   |
  * |--------+------+------+------+------+------| Win  |           | Win  |------+------+------+------+------+--------|
@@ -86,8 +86,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [BASE] = LAYOUT_ergodox_pretty(
   // left hand
-  KC_ESC,   KC_NO,   KC_NO, KC_NO,   KC_NO,  KC_NO, KC_LEFT,              KC_RGHT, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,    MO(SPEC),
-  KC_TAB,   UK_Q,    UK_W,  UK_F,    UK_P,   UK_B,  KC_NO,                KC_NO,   UK_J,    UK_L,    UK_U,    UK_Y,    UK_SCLN,  KC_NO,
+  KC_ESC,   KC_NO,   KC_NO, KC_NO,   KC_NO,  KC_NO, KC_NO,                KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,    MO(SPEC),
+  KC_TAB,   UK_Q,    UK_W,  UK_F,    UK_P,   UK_B,  KC_PAUS,              KC_RALT, UK_J,    UK_L,    UK_U,    UK_Y,    UK_SCLN,  KC_NO,
   MO(SYMB), UK_A,    UK_R,  UK_S,    UK_T,   UK_G,                                 UK_M,    UK_N,    UK_E,    UK_I,    UK_O,     UK_MINS,
   KC_LSFT,  UK_Z,    UK_X,  UK_C,    UK_D,   UK_V,  KC_LWIN,              KC_RWIN, UK_K,    UK_H,    UK_COMM, UK_DOT,  UK_QUOT,  UK_SLSH,
   SYF_LCTL, UK_BSLS, KC_NO, KC_LALT, LT(NAVI, KC_ENT),                             KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, MO(MDIA),
@@ -321,7 +321,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
                                                KC_TRNS, KC_TRNS,     KC_NO, KC_NO,
                                                         KC_TRNS,     KC_NO,
-                                      KC_TRNS, KC_TRNS, KC_TRNS,     KC_NO, KC_PSCR, LALT(KC_PSCR)
+                                      KC_TRNS, KC_TRNS, KC_TRNS,     KC_NO, KC_PSCR, LGUI(KC_PSCR)
 ),
 };
 // clang-format on

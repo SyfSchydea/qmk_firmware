@@ -61,8 +61,6 @@ tap_dance_action_t tap_dance_actions[] = {
 #define BASE_SPEC TD(TD_BASE_SPEC)
 #define SYF_LCTL  LM(CTRL, MOD_LCTL)
 
-#define LCG(kc) LCTL(LGUI(kc))
-
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap BASE: Basic layer
@@ -282,14 +280,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [MDIA] = LAYOUT_ergodox_pretty(
   // left hand
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_MS_U, KC_TRNS, KC_TRNS, KC_WH_U,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_MS_L, KC_MS_D, KC_MS_R, KC_TRNS,                       KC_TRNS, KC_BTN1, KC_BTN2, KC_BTN3, KC_TRNS, KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_WH_D,     KC_TRNS, KC_TRNS, KC_TRNS, KC_MPRV, KC_MNXT, KC_TRNS, KC_TRNS,
+  KC_TRNS, KC_TRNS, KC_TRNS, MS_UP,   KC_TRNS, KC_TRNS, MS_WHLU,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
+  KC_TRNS, KC_TRNS, MS_LEFT, MS_DOWN, MS_RGHT, KC_TRNS,                       KC_TRNS, MS_BTN1, MS_BTN2, MS_BTN3, KC_TRNS, KC_TRNS,
+  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, MS_WHLD,     KC_TRNS, KC_TRNS, KC_TRNS, KC_MPRV, KC_MNXT, KC_TRNS, KC_TRNS,
   KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                         KC_MUTE, KC_VOLD, KC_VOLU, KC_TRNS, KC_TRNS,
 
-                                               KC_BTN4, KC_BTN5,     KC_TRNS, KC_TRNS,
+                                               MS_BTN4, MS_BTN5,     KC_TRNS, KC_TRNS,
                                                         KC_TRNS,     KC_TRNS,
-                                      KC_BTN1, KC_BTN2, KC_BTN3,     KC_TRNS, LCTL(KC_PGUP), LCTL(KC_PGDN)
+                                      MS_BTN1, MS_BTN2, MS_BTN3,     KC_TRNS, LCTL(KC_PGUP), LCTL(KC_PGDN)
 ),
 
 /* Keymap SPEC: Special functions and layer switches

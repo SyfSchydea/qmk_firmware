@@ -86,14 +86,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [BASE] = LAYOUT_ergodox_pretty(
   // left hand
-  KC_ESC,   KC_NO,   KC_NO, KC_NO,   KC_NO,  KC_NO, KC_NO,                KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,    MO(SPEC),
-  KC_TAB,   UK_Q,    UK_W,  UK_F,    UK_P,   UK_B,  KC_PAUS,              KC_RALT, UK_J,    UK_L,    UK_U,    UK_Y,    UK_SCLN,  KC_NO,
-  MO(SYMB), UK_A,    UK_R,  UK_S,    UK_T,   UK_G,                                 UK_M,    UK_N,    UK_E,    UK_I,    UK_O,     UK_MINS,
-  KC_LSFT,  UK_Z,    UK_X,  UK_C,    UK_D,   UK_V,  KC_LWIN,              KC_RWIN, UK_K,    UK_H,    UK_COMM, UK_DOT,  UK_QUOT,  UK_SLSH,
-  SYF_LCTL, UK_BSLS, KC_NO, KC_LALT, LT(NAVI, KC_ENT),                             KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, MO(MDIA),
-                                       LCTL(KC_INS),  LSFT(KC_INS),     KC_NO,   KC_NO,
-                                                      KC_APP,           KC_NO,
-                                     KC_SPC, KC_BSPC, KC_DEL,           KC_RCTL, KC_RSFT, MO(SYMB)
+  KC_ESC,   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,               XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, MO(SPEC),
+  KC_TAB,   UK_Q,    UK_W,    UK_F,    UK_P,    UK_B,    KC_PAUS,               KC_RALT, UK_J,    UK_L,    UK_U,    UK_Y,    UK_SCLN, XXXXXXX,
+  MO(SYMB), UK_A,    UK_R,    UK_S,    UK_T,    UK_G,                                    UK_M,    UK_N,    UK_E,    UK_I,    UK_O,    UK_MINS,
+  KC_LSFT,  UK_Z,    UK_X,    UK_C,    UK_D,    UK_V,    KC_LWIN,               KC_RWIN, UK_K,    UK_H,    UK_COMM, UK_DOT,  UK_QUOT, UK_SLSH,
+  SYF_LCTL, UK_BSLS, XXXXXXX, KC_LALT, LT(NAVI, KC_ENT),                                          KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, MO(MDIA),
+                                           LCTL(KC_INS),  LSFT(KC_INS),    XXXXXXX, XXXXXXX,
+                                                          KC_APP,          XXXXXXX,
+                                         KC_SPC, KC_BSPC, KC_DEL,          KC_RCTL, KC_RSFT, MO(SYMB)
 ),
 
 /* Keymap STNO: Stenography Layer
@@ -118,14 +118,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [STNO] = LAYOUT_ergodox_pretty(
   // left hand
-  KC_NO,   KC_NO,  KC_NO,  KC_NO,   KC_NO,  KC_NO,   KC_NO,      KC_NO, KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,  BASE_SPEC,
-  KC_TRNS, STN_N1, STN_N2, STN_N3,  STN_N4, STN_N5,  KC_NO,      KC_NO, STN_N6,  STN_N7,  STN_N8,  STN_N9,  STN_NA, STN_NB,
-  KC_TRNS, STN_S1, STN_TL, STN_PL,  STN_HL, STN_ST1,                    STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR, STN_DR,
-  KC_TRNS, STN_S2, STN_KL, STN_WL,  STN_RL, STN_ST2, KC_NO,      KC_NO, STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR, STN_ZR,
-  KC_TRNS, KC_NO,  KC_NO,  KC_TRNS, KC_TRNS,                            KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_NO,
-                                          KC_TRNS, KC_TRNS,        KC_NO, KC_NO,
-                                                   KC_NO,          KC_NO,
-                                   STN_A, STN_O,   KC_NO,          KC_NO, STN_E, STN_U
+  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, BASE_SPEC,
+  _______, STN_N1,  STN_N2,  STN_N3,  STN_N4,  STN_N5,  XXXXXXX,      XXXXXXX, STN_N6,  STN_N7,  STN_N8,  STN_N9,  STN_NA,  STN_NB,
+  _______, STN_S1,  STN_TL,  STN_PL,  STN_HL,  STN_ST1,                        STN_ST3, STN_FR,  STN_PR,  STN_LR,  STN_TR,  STN_DR,
+  _______, STN_S2,  STN_KL,  STN_WL,  STN_RL,  STN_ST2, XXXXXXX,      XXXXXXX, STN_ST4, STN_RR,  STN_BR,  STN_GR,  STN_SR,  STN_ZR,
+  _______, XXXXXXX, XXXXXXX, _______, _______,                                          _______, _______, _______, _______, XXXXXXX,
+                                                _______, _______,    XXXXXXX, XXXXXXX,
+                                                         XXXXXXX,    XXXXXXX,
+                                           STN_A, STN_O, XXXXXXX,    XXXXXXX, STN_E, STN_U
 ),
 
 /* Keymap GAME: Gaming layer
@@ -151,14 +151,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [GAME] = LAYOUT_ergodox_pretty(
   // left hand
-  KC_ESC,  UK_1, UK_2, UK_3,    UK_4,   UK_5, UK_6,        KC_NO,   UK_6,    UK_7,    UK_8,    UK_9,    UK_0,     BASE_SPEC,
-  KC_TAB,  UK_T, UK_Q, UK_W,    UK_E,   UK_R, UK_7,        KC_NO,   UK_Y,    UK_U,    UK_I,    UK_O,    UK_P,     KC_NO,
-  UK_BSLS, UK_G, UK_A, UK_S,    UK_D,   UK_F,                       UK_H,    UK_J,    UK_K,    UK_L,    UK_SCLN,  UK_QUOT,
-  KC_LSFT, UK_B, UK_Z, UK_X,    UK_C,   UK_V, UK_8,        KC_RWIN, UK_N,    UK_M,    UK_COMM, UK_DOT,  UK_SLSH,  UK_MINS,
-  KC_LCTL, UK_9, UK_0, KC_LALT, KC_ENT,                                      KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT,  MO(MDIA),
-                              LCTL(KC_INS), LSFT(KC_INS),    UK_MINS, UK_EQL,
-                                            KC_NO,           KC_NO,
-                      KC_SPC,      KC_BSPC, KC_NO,           KC_RCTL, KC_RSFT, MO(SYMB)
+  KC_ESC,  UK_1, UK_2, UK_3,    UK_4,   UK_5, UK_6,      XXXXXXX, UK_6, UK_7,    UK_8,    UK_9,   UK_0,    BASE_SPEC,
+  KC_TAB,  UK_T, UK_Q, UK_W,    UK_E,   UK_R, UK_7,      XXXXXXX, UK_Y, UK_U,    UK_I,    UK_O,   UK_P,    XXXXXXX,
+  UK_BSLS, UK_G, UK_A, UK_S,    UK_D,   UK_F,                     UK_H, UK_J,    UK_K,    UK_L,   UK_SCLN, UK_QUOT,
+  KC_LSFT, UK_B, UK_Z, UK_X,    UK_C,   UK_V, UK_8,      KC_RWIN, UK_N, UK_M,    UK_COMM, UK_DOT, UK_SLSH, UK_MINS,
+  KC_LCTL, UK_9, UK_0, KC_LALT, KC_ENT,                                 KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT, MO(MDIA),
+                         LCTL(KC_INS), LSFT(KC_INS),    UK_MINS, UK_EQL,
+                                       XXXXXXX,         XXXXXXX,
+                 KC_SPC, KC_BSPC,      XXXXXXX,         KC_RCTL, KC_RSFT, MO(SYMB)
 ),
 
 /* Keymap CTRL: CTRL overlay - mostly qwerty
@@ -183,14 +183,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [CTRL] = LAYOUT_ergodox_pretty(
   // left hand
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_TRNS, UK_Q,    UK_W,    UK_E,    UK_R,    UK_T,    UK_P,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_TRNS, UK_A,    UK_S,    UK_D,    UK_F,    UK_G,                          KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_TRNS, UK_Z,    UK_X,    UK_C,    UK_V,    UK_B,    UK_N,        KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                             KC_TRNS, KC_TRNS,         KC_TRNS, KC_TRNS,
-                                                      KC_TRNS,         KC_TRNS,
-                                    KC_TRNS, KC_TRNS, KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS
+  _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
+  _______, UK_Q,    UK_W,    UK_E,    UK_R,    UK_T,    UK_P,         _______, _______, _______, _______, _______, _______, _______,
+  _______, UK_A,    UK_S,    UK_D,    UK_F,    UK_G,                           _______, _______, _______, _______, _______, _______,
+  _______, UK_Z,    UK_X,    UK_C,    UK_V,    UK_B,    UK_N,         _______, _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, _______, _______,                                          _______, _______, _______, _______, _______,
+                                                _______, _______,    _______, _______,
+                                                         _______,    _______,
+                                       _______, _______, _______,    _______, _______, _______
 ),
 
 /* Keymap SYMB: Symbol Layer
@@ -215,14 +215,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [SYMB] = LAYOUT_ergodox_pretty(
   // left hand
-  KC_ESC,  KC_F1,         KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,       KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  KC_TRNS,
-  KC_TRNS, UK_EXLM,       UK_DQUO, UK_LCBR, UK_RCBR, UK_PND,  KC_TRNS,     KC_TRNS, KC_PSLS, UK_7,    UK_8,    UK_9,    UK_ASTR, UK_PERC,
-  KC_TRNS, UK_AMPR,       UK_CIRC, UK_LPRN, UK_RPRN, UK_DLR,                        UK_COLN, UK_4,    UK_5,    UK_6,    UK_PLUS, UK_MINS,
-  KC_TRNS, LSFT(UK_BSLS), UK_GRV,  UK_LBRC, UK_RBRC, UK_HASH, KC_TRNS,     KC_TRNS, UK_UNDS, UK_1,    UK_2,    UK_3,    UK_0,    UK_EQL,
-  KC_TRNS, KC_TRNS,       KC_TRNS, KC_TRNS, KC_TRNS,                                         KC_NO,   UK_COMM, KC_PDOT, KC_NO,   KC_TRNS,
-                                                   KC_TRNS, KC_TRNS,         KC_TRNS, KC_TRNS,
-                                                            KC_TRNS,         KC_TRNS,
-                                          KC_TRNS, KC_TRNS, KC_TRNS,         KC_TRNS, KC_TRNS, KC_TRNS
+  KC_ESC,  KC_F1,         KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,        KC_F7,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,  _______,
+  _______, UK_EXLM,       UK_DQUO, UK_LCBR, UK_RCBR, UK_PND,  _______,      _______, KC_PSLS, UK_7,    UK_8,    UK_9,    UK_ASTR, UK_PERC,
+  _______, UK_AMPR,       UK_CIRC, UK_LPRN, UK_RPRN, UK_DLR,                         UK_COLN, UK_4,    UK_5,    UK_6,    UK_PLUS, UK_MINS,
+  _______, LSFT(UK_BSLS), UK_GRV,  UK_LBRC, UK_RBRC, UK_HASH, _______,      _______, UK_UNDS, UK_1,    UK_2,    UK_3,    UK_0,    UK_EQL,
+  _______, _______,       _______, _______, _______,                                          XXXXXXX, UK_COMM, KC_PDOT, XXXXXXX, _______,
+                                                      _______, _______,    _______, _______,
+                                                               _______,    _______,
+                                             _______, _______, _______,    _______, _______, _______
 ),
 
 /* Keymap NAVI: Navigation Layer
@@ -247,14 +247,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [NAVI] = LAYOUT_ergodox_pretty(
   // left hand
-  KC_NO,       KC_NO,   KC_NO,   KC_NO,        KC_NO,        KC_NO, KC_NO,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  LCA(KC_TAB), KC_PGUP, KC_HOME, KC_UP,        KC_END,       KC_NO, KC_NO,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_NO,       KC_PGDN, KC_LEFT, KC_DOWN,      KC_RGHT,      KC_NO,                    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_NO,       KC_NO,   KC_NO,   LCG(KC_LEFT), LCG(KC_RGHT), KC_NO, KC_NO,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_NO,       KC_NO,   KC_NO,   KC_NO,        KC_TRNS,                                         KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-                                                         KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS,
-                                                                  KC_TRNS,      KC_TRNS,
-                                                KC_TRNS, KC_TRNS, KC_TRNS,      KC_TRNS, KC_TRNS, KC_TRNS
+  XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX,      XXXXXXX,      XXXXXXX, XXXXXXX,      _______, _______, _______, _______, _______, _______, _______,
+  LCA(KC_TAB), KC_PGUP, KC_HOME, KC_UP,        KC_END,       XXXXXXX, XXXXXXX,      _______, _______, _______, _______, _______, _______, _______,
+  XXXXXXX,     KC_PGDN, KC_LEFT, KC_DOWN,      KC_RGHT,      XXXXXXX,                        _______, _______, _______, _______, _______, _______,
+  XXXXXXX,     XXXXXXX, XXXXXXX, LCG(KC_LEFT), LCG(KC_RGHT), XXXXXXX, XXXXXXX,      _______, _______, _______, _______, _______, _______, _______,
+  XXXXXXX,     XXXXXXX, XXXXXXX, XXXXXXX,      _______,                                               _______, _______, _______, _______, _______,
+                                                              _______, _______,    _______, _______,
+                                                                       _______,    _______,
+                                                     _______, _______, _______,    _______, _______, _______
 ),
 
 /* Keymap MDIA: Media and mouse keys
@@ -279,15 +279,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [MDIA] = LAYOUT_ergodox_pretty(
   // left hand
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS, MS_UP,   KC_TRNS, KC_TRNS, MS_WHLU,     KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,
-  KC_TRNS, KC_TRNS, MS_LEFT, MS_DOWN, MS_RGHT, KC_TRNS,                       KC_TRNS, MS_BTN1, MS_BTN2, MS_BTN3, KC_TRNS, KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, MS_WHLD,     KC_TRNS, KC_TRNS, KC_TRNS, KC_MPRV, KC_MNXT, KC_TRNS, KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                         KC_MUTE, KC_VOLD, KC_VOLU, KC_TRNS, KC_TRNS,
-
-                                               MS_BTN4, MS_BTN5,     KC_TRNS, KC_TRNS,
-                                                        KC_TRNS,     KC_TRNS,
-                                      MS_BTN1, MS_BTN2, MS_BTN3,     KC_TRNS, LCTL(KC_PGUP), LCTL(KC_PGDN)
+  _______, _______, _______, _______, _______, _______, _______,      _______, _______, _______, _______, _______, _______, _______,
+  _______, _______, _______, MS_UP,   _______, _______, MS_WHLU,      _______, _______, _______, _______, _______, _______, _______,
+  _______, _______, MS_LEFT, MS_DOWN, MS_RGHT, _______,                        _______, MS_BTN1, MS_BTN2, MS_BTN3, _______, _______,
+  _______, _______, _______, _______, _______, _______, MS_WHLD,      _______, _______, _______, KC_MPRV, KC_MNXT, _______, _______,
+  _______, _______, _______, _______, _______,                                          KC_MUTE, KC_VOLD, KC_VOLU, _______, _______,
+                                                MS_BTN4, MS_BTN5,    _______, _______,
+                                                         _______,    _______,
+                                       MS_BTN1, MS_BTN2, MS_BTN3,    _______, LCTL(KC_PGUP), LCTL(KC_PGDN)
 ),
 
 /* Keymap SPEC: Special functions and layer switches
@@ -313,15 +312,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 [SPEC] = LAYOUT_ergodox_pretty(
   // left hand
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     QK_BOOT, KC_NO, KC_NO, KC_NO, TO(GAME), TO(STNO), KC_TRNS,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO,    KC_NUM,   KC_NO,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                       KC_NO, KC_NO, KC_NO, NK_ON,    KC_SLEP,  KC_NO,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,     KC_NO,   KC_NO, KC_NO, KC_NO, KC_NO,    KC_NO,    KC_NO,
-  KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,                                       KC_NO, KC_NO, KC_NO,    KC_NO,    KC_NO,
-
-                                               KC_TRNS, KC_TRNS,     KC_NO, KC_NO,
-                                                        KC_TRNS,     KC_NO,
-                                      KC_TRNS, KC_TRNS, KC_TRNS,     KC_NO, KC_PSCR, LGUI(KC_PSCR)
+  _______, _______, _______, _______, _______, _______, _______,      QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, TO(GAME), TO(STNO), _______,
+  _______, _______, _______, _______, _______, _______, _______,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_NUM,   XXXXXXX,
+  _______, _______, _______, _______, _______, _______,                        XXXXXXX, XXXXXXX, XXXXXXX, NK_ON,    KC_SLEP,  XXXXXXX,
+  _______, _______, _______, _______, _______, _______, _______,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,
+  _______, _______, _______, _______, _______,                                          XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,
+                                                _______, _______,    XXXXXXX, XXXXXXX,
+                                                         _______,    XXXXXXX,
+                                       _______, _______, _______,    XXXXXXX, KC_PSCR, LGUI(KC_PSCR)
 ),
 };
 // clang-format on

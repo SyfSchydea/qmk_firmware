@@ -294,7 +294,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |        |      |      |      |      |      |      |           |RstKb |      |      |      | Game |Steno |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |      |      |      |      |      |      |           |      |      |      |      |      |NumLk |        |
+ * |        |      |      |      |      |      |      |           |      |      |      |      |Pause |NumLk |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
  * |        |      |      |      |      |      |------|           |------|      |      |      | NKRO |Sleep |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
@@ -313,7 +313,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 [SPEC] = LAYOUT_ergodox_pretty(
   // left hand
   _______, _______, _______, _______, _______, _______, _______,      QK_BOOT, XXXXXXX, XXXXXXX, XXXXXXX, TO(GAME), TO(STNO), _______,
-  _______, _______, _______, _______, _______, _______, _______,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  KC_NUM,   XXXXXXX,
+  _______, _______, _______, _______, _______, _______, _______,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_PAUS,  KC_NUM,   XXXXXXX,
   _______, _______, _______, _______, _______, _______,                        XXXXXXX, XXXXXXX, XXXXXXX, NK_ON,    KC_SLEP,  XXXXXXX,
   _______, _______, _______, _______, _______, _______, _______,      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,
   _______, _______, _______, _______, _______,                                          XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,
